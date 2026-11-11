@@ -1,13 +1,22 @@
-# NEON ARENA
+# DUSTLINE 2.0
 
-3D browser arena prototype. Node.js 20+ required.
+Браузерный командный 3D-шутер от первого лица. До 32 игроков на одном сервере.
 
-Run: npm install then npm start. Open http://localhost:3000.
+## Запуск
+Node.js 20+: npm install, затем npm start. Открыть http://localhost:3000.
+Проверки: npm test.
 
-All visitors to the same server join one arena (32 players maximum).
-Five classes, server-controlled movement/combat, pickups, respawn and scoreboard.
-Camera: overhead 3D. Desktop keyboard and mouse required.
+## Игра
+Две автоматически сбалансированные команды. При выходе игроков баланс восстанавливается. Командный бой с возрождением, общий счёт и индивидуальные убийства/смерти. Урон союзникам выключен.
+12 моделей оружия: AK-47, M4A1, FAMAS, Glock, Desert Eagle, MP5, P90, Nova, XM1014, AWP, Scout, Negev; плюс нож.
+Осколочная, дымовая и световая гранаты. Дым скрывает обзор, вспышка временно ослепляет, стены блокируют взрыв и пули. Магазины, перезарядка, повышенный урон в голову.
+Оригинальная пустынная карта Dust Courtyard с A/B, центром, боковыми проходами и ящиками. Это прототип в стиле тактических шутеров, а не точное воспроизведение CS или Mirage. Режим закладки бомбы и экономика не реализованы.
 
-Public deployment: upload this folder to a GitHub repository and create a Render Web Service using render.yaml (free plan), or use npm install / npm start. An authenticated hosting account is required. The old Netlify static page does not run this server.
+## Управление
+WASD — ходить; мышь — обзор; ЛКМ — стрелять; ПКМ — прицел; Space — прыжок; R — перезарядка; G — бросок; H — следующий тип гранаты; 1/2/3 — основное/пистолет/нож; B — выбор оружия; Tab — счёт; V — третье лицо; Esc — освободить мышь. Нажать на карту, чтобы захватить мышь. Если браузер не поддерживает захват, обзор работает с зажатой ПКМ и стрелками.
 
-This is a prototype: no persistent progress, rooms, matchmaking or mobile controls. Restart resets the arena. Deploy one instance to keep players in the same match.
+## Производительность
+Нет динамических теней, постобработки и лута. Карта и персонажи рисуются пакетами InstancedMesh. Общая геометрия, материалы и пулы эффектов. Ограниченное разрешение с автоматическим снижением при низком FPS. Сервер считает симуляцию 30 раз/с и отправляет один общий сериализованный снимок 15 раз/с. Движение локального игрока предсказывается, другие игроки сглаживаются. Вкладка в фоне прекращает рендер. FPS зависит от компьютера, графического ускорения браузера и активности вкладки.
+
+## Размещение
+Один Node Web Service, npm install / npm start, переменная PORT от хостинга. render.yaml использует free. Данные хранятся в памяти и сбрасываются при перезапуске. Бесплатный Render засыпает после простоя; первый запуск может занять минуту. Прототип рассчитан на ПК с клавиатурой и мышью.
