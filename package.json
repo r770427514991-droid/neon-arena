@@ -1,2 +1,3 @@
-{"name":"dustline-arena","version":"2.0.0","private":true,"type":"module","scripts":{"start":"node server.js","test":"node --test game.test.js"},"dependencies":{"three":"0.170.0","ws":"8.22.2"}}
+{"name":"dustline-arena","version":"3.0.0","private":true,"type":"module","scripts":{"start":"node server.js","test":"node --test game.test.js"},"dependencies":{"three":"0.170.0","ws":"8.22.2"}}
+
 
